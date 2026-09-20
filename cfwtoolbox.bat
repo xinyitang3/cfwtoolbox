@@ -334,7 +334,7 @@ set "UPDATE_CMD=%TEMP%\cfw_update_apply.bat"
 if exist "%UPDATE_CMD%" del /F /Q "%UPDATE_CMD%" >nul 2>&1
 (
 echo @echo off
-echo ping 127.0.0.1 -n 3 ^>nul
+echo timeout /t 2 /nobreak ^>nul
 echo copy /Y "%TMPBAT%" "%SCRIPT_DIR%cfwtoolbox.bat" ^>nul
 echo if not errorlevel 1 goto upd_ok
 echo echo 覆盖失败
@@ -344,7 +344,6 @@ echo :upd_ok
 echo del /F /Q "%TMPBAT%" ^>nul 2^>^&1
 echo cd /d "%SCRIPT_DIR%"
 echo start "" "%SCRIPT_DIR%cfwtoolbox.bat"
-echo del /F /Q "%%~f0" ^>nul 2^>^&1
 ) > "%UPDATE_CMD%"
 
 echo 更新已下载，脚本将重启...
