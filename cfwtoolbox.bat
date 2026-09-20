@@ -1,7 +1,7 @@
 @echo off
 chcp 936 >nul 2>&1
 setlocal enabledelayedexpansion
-title Clash for Windows 工具箱
+title Clash for Windows ToolBox
 
 set "SCRIPT_DIR=%~dp0"
 set "KERNEL_DIR=%SCRIPT_DIR%resources\static\files\win\x64"
@@ -30,11 +30,13 @@ cls
 cd /d "%KERNEL_DIR%"
 call :detect_type "%ACTIVE%"
 echo.
-echo Clash for Windows 工具箱
+echo Clash for Windows ToolBox
+echo.
+echo 仅支持 Clash for Windows v0.20.39
 echo.
 echo 当前内核: !CURTYPE!
 echo.
-for %%A in ("1. 切换内核" "2. 更新内核" "3. 切换语言" "4. 控制 Clash" "5. 整理内核文件" "6. 查看内核应用" "7. 注入分流规则" "8. 更新 Geo 数据库" "9. 更新脚本" "10. 退出") do echo %%~A
+for %%A in ("1. 切换内核" "2. 更新内核" "3. 切换语言" "4. 控制 Clash" "5. 整理内核文件" "6. 查看内核应用" "7. 注入分流规则" "8. 更新 Geo 数据库" "9. 更新脚本" "10. 退出脚本") do echo %%~A
 echo.
 set /p "CHOICE=选择 [1-10]:"
 if "%CHOICE%"=="1" (call :sub_switch & goto menu)
