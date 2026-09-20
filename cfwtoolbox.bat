@@ -334,9 +334,13 @@ set "UPDATE_CMD=%TEMP%\cfw_update_apply.bat"
 if exist "%UPDATE_CMD%" del /F /Q "%UPDATE_CMD%" >nul 2>&1
 (
 echo @echo off
-echo timeout /t 2 /nobreak ^>nul
+echo ping 127.0.0.1 -n 3 ^>nul
 echo copy /Y "%TMPBAT%" "%SCRIPT_DIR%cfwtoolbox.bat" ^>nul
-echo if errorlevel 1 echo ¸²¸ÇÊ§°Ü ^& pause ^& exit /b 1
+echo if not errorlevel 1 goto upd_ok
+echo echo ¸²¸ÇÊ§°Ü
+echo pause
+echo exit /b 1
+echo :upd_ok
 echo del /F /Q "%TMPBAT%" ^>nul 2^>^&1
 echo cd /d "%SCRIPT_DIR%"
 echo start "" "%SCRIPT_DIR%cfwtoolbox.bat"
