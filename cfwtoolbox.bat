@@ -342,8 +342,7 @@ echo pause
 echo exit /b 1
 echo :upd_ok
 echo del /F /Q "%TMPBAT%" ^>nul 2^>^&1
-echo cd /d "%SCRIPT_DIR%"
-echo start "" "%SCRIPT_DIR%cfwtoolbox.bat"
+echo start "" /D "%SCRIPT_DIR%" cmd /c "cfwtoolbox.bat"
 ) > "%UPDATE_CMD%"
 
 echo 更新已下载，脚本将重启...
