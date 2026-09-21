@@ -318,7 +318,7 @@ echo 正在检查更新...
 set "TMPBAT=%TEMP%\cfwtoolbox_new.bat"
 if exist "%TMPBAT%" del /F /Q "%TMPBAT%" >nul 2>&1
 
-powershell -NoProfile -Command "[Net.ServicePointManager]::SecurityProtocol=[Net.SecurityProtocolType]::Tls12; $urls=@('https://ghfast.top/https://raw.githubusercontent.com/xinyitang3/cfwtoolbox/main/cfwtoolbox.bat','https://raw.githubusercontent.com/xinyitang3/cfwtoolbox/main/cfwtoolbox.bat'); foreach($u in $urls){ try{Invoke-WebRequest -Uri $u -OutFile '%TMPBAT%' -UseBasicParsing -TimeoutSec 60 -ErrorAction Stop; exit 0 }catch{} }; exit 1" || (echo 下载失败 & pause & exit /b 1)
+powershell -NoProfile -Command "[Net.ServicePointManager]::SecurityProtocol=[Net.SecurityProtocolType]::Tls12; $urls=@('https://fastly.jsdelivr.net/gh/xinyitang3/cfwtoolbox@main/cfwtoolbox.bat','https://ghfast.top/https://raw.githubusercontent.com/xinyitang3/cfwtoolbox/main/cfwtoolbox.bat','https://testingcf.jsdelivr.net/gh/xinyitang3/cfwtoolbox@main/cfwtoolbox.bat','https://cdn.jsdelivr.net/gh/xinyitang3/cfwtoolbox@main/cfwtoolbox.bat','https://raw.githubusercontent.com/xinyitang3/cfwtoolbox/main/cfwtoolbox.bat','https://gh-proxy.com/https://raw.githubusercontent.com/xinyitang3/cfwtoolbox/main/cfwtoolbox.bat','https://mirror.ghproxy.com/https://raw.githubusercontent.com/xinyitang3/cfwtoolbox/main/cfwtoolbox.bat'); foreach($u in $urls){ try{Invoke-WebRequest -Uri $u -OutFile '%TMPBAT%' -UseBasicParsing -TimeoutSec 60 -ErrorAction Stop; exit 0 }catch{} }; exit 1" || (echo 下载失败 & pause & exit /b 1)
 
 if not exist "%TMPBAT%" (echo 下载文件缺失 & pause & exit /b 1)
 
@@ -631,23 +631,39 @@ if (-not (Test-Path $dest)) { Write-Host "找不到 data 目录"; exit 1 }
 $targets = [ordered]@{
     'GeoSite.dat' = @(
         'https://fastly.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geosite.dat',
+        'https://ghfast.top/https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/geosite.dat',
         'https://testingcf.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geosite.dat',
-        'https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geosite.dat'
+        'https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geosite.dat',
+        'https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/geosite.dat',
+        'https://gh-proxy.com/https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/geosite.dat',
+        'https://mirror.ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/geosite.dat'
     )
     'GeoIP.dat' = @(
         'https://fastly.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geoip.dat',
+        'https://ghfast.top/https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/geoip.dat',
         'https://testingcf.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geoip.dat',
-        'https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geoip.dat'
+        'https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geoip.dat',
+        'https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/geoip.dat',
+        'https://gh-proxy.com/https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/geoip.dat',
+        'https://mirror.ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/geoip.dat'
     )
     'Country.mmdb' = @(
         'https://fastly.jsdelivr.net/gh/alecthw/mmdb_china_ip_list@release/lite/Country.mmdb',
+        'https://ghfast.top/https://raw.githubusercontent.com/alecthw/mmdb_china_ip_list/release/lite/Country.mmdb',
         'https://testingcf.jsdelivr.net/gh/alecthw/mmdb_china_ip_list@release/lite/Country.mmdb',
-        'https://cdn.jsdelivr.net/gh/alecthw/mmdb_china_ip_list@release/lite/Country.mmdb'
+        'https://cdn.jsdelivr.net/gh/alecthw/mmdb_china_ip_list@release/lite/Country.mmdb',
+        'https://raw.githubusercontent.com/alecthw/mmdb_china_ip_list/release/lite/Country.mmdb',
+        'https://gh-proxy.com/https://raw.githubusercontent.com/alecthw/mmdb_china_ip_list/release/lite/Country.mmdb',
+        'https://mirror.ghproxy.com/https://raw.githubusercontent.com/alecthw/mmdb_china_ip_list/release/lite/Country.mmdb'
     )
     'GeoLite2-ASN.mmdb' = @(
         'https://fastly.jsdelivr.net/gh/xishang0128/geoip@release/GeoLite2-ASN.mmdb',
+        'https://ghfast.top/https://raw.githubusercontent.com/xishang0128/geoip/release/GeoLite2-ASN.mmdb',
         'https://testingcf.jsdelivr.net/gh/xishang0128/geoip@release/GeoLite2-ASN.mmdb',
-        'https://cdn.jsdelivr.net/gh/xishang0128/geoip@release/GeoLite2-ASN.mmdb'
+        'https://cdn.jsdelivr.net/gh/xishang0128/geoip@release/GeoLite2-ASN.mmdb',
+        'https://raw.githubusercontent.com/xishang0128/geoip/release/GeoLite2-ASN.mmdb',
+        'https://gh-proxy.com/https://raw.githubusercontent.com/xishang0128/geoip/release/GeoLite2-ASN.mmdb',
+        'https://mirror.ghproxy.com/https://raw.githubusercontent.com/xishang0128/geoip/release/GeoLite2-ASN.mmdb'
     )
 }
 
